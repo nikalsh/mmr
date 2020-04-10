@@ -1,12 +1,11 @@
 package model;
 
+import exception.LevelNotFoundException;
 import lombok.Getter;
 
 import java.util.Map;
 
 public class Rank {
-
-
     private final int level;
     /* minimum exp required for a level */
     private final int minExp;
@@ -50,12 +49,29 @@ public class Rank {
         return winFactor;
     }
 
-    public static Rank get(Integer level) {
-        return TABLE.get(level);
+    public static int MIN_LEVEL = 1;
+    public static int MAX_LEVEL = 50;
+    public static int MAX_EXP = 1000000000;
+    public static int MIN_EXP = 1;
+
+    public static Rank findRankByLevel(Integer level) throws LevelNotFoundException {
+        if (TABLE.get(level) != null) {
+            return TABLE.get(level);
+        }
+        throw new LevelNotFoundException(String.format("Could not find level, minimum %s, maxmimum %s%n", MIN_LEVEL, MAX_LEVEL));
+    }
+
+    public static Integer findLevelByExperience(int exp) throws LevelNotFoundException {
+        return TABLE.entrySet()
+                .stream()
+                .filter(e -> exp >= e.getValue().getMinExp() && exp <= e.getValue().getMaxExp())
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElseThrow(() -> new LevelNotFoundException(String.format("Could not find level in experience range; minimum: %s, maximum: %s%n", MIN_EXP, MAX_EXP)));
     }
 
     public static final Map<Integer, Rank> TABLE = Map.ofEntries(
-            Map.entry(1, new Rank(1, 1, 99, 10, 0.0, 1.0)),
+            Map.entry(1, new Rank(1, MIN_EXP, 99, 10, 0.0, 1.0)),
             Map.entry(2, new Rank(2, 100, 199, 9, 0.025, 1.0)),
             Map.entry(3, new Rank(3, 200, 299, 8, 0.05, 1.0)),
             Map.entry(4, new Rank(4, 300, 399, 7, 0.075, 1.0)),
@@ -104,5 +120,5 @@ public class Rank {
             Map.entry(47, new Rank(47, 9500, 9749, 3, 1.0, 0.65)),
             Map.entry(48, new Rank(48, 9750, 9999, 2, 1.0, 0.6)),
             Map.entry(49, new Rank(49, 10000, 10249, 1, 1.0, 0.55)),
-            Map.entry(50, new Rank(50, 10250, 1000000000, 0, 1.0, 0.5)));
+            Map.entry(50, new Rank(50, 10250, MAX_EXP, 0, 1.0, 0.5)));
 }

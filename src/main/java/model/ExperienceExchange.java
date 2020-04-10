@@ -21,6 +21,12 @@ public class ExperienceExchange {
         this.lowerWin = lowerWin;
         this.lowerLoss = lowerLoss;
     }
+
+    public static int expGained(int exp, double factor) {
+        return (int) ((double) exp * factor);
+    }
+
+
     private static final Map<Integer, ExperienceExchange> EXP_EXCHANGE = Map.ofEntries(
             Map.entry(0, new ExperienceExchange(0, 100, 100, 100, 100)),
             Map.entry(1, new ExperienceExchange(1, 92, 108, 108, 92)),
@@ -39,8 +45,6 @@ public class ExperienceExchange {
             Map.entry(14, new ExperienceExchange(14, 51, 149, 149, 51)),
             Map.entry(15, new ExperienceExchange(15, 50, 150, 150, 50))
     );
-
-
 
     public static ExperienceExchange get(int levelDiff) {
         return levelDiff >= 15 ? EXP_EXCHANGE.get(15) : EXP_EXCHANGE.get(levelDiff);
