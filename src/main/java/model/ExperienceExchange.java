@@ -1,6 +1,5 @@
 package model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Map;
@@ -49,6 +48,5 @@ public class ExperienceExchange {
     public static ExperienceExchange get(int levelDiff) {
         return levelDiff >= 15 ? EXP_EXCHANGE.get(15) : EXP_EXCHANGE.get(levelDiff);
     }
-
 
 }

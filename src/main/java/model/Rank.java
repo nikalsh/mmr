@@ -1,7 +1,6 @@
 package model;
 
 import exception.LevelNotFoundException;
-import lombok.Getter;
 
 import java.util.Map;
 

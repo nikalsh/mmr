@@ -7,7 +7,6 @@ import model.Rank;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MMR {
 
@@ -42,7 +41,7 @@ public class MMR {
         int winSum = winnerExp + expGained;
         winner.setExperience(winSum >= Rank.MAX_EXP ? Rank.MAX_EXP : winSum);
 
-        int expLost = ExperienceExchange.expGained(experienceExchange.getHigherLoss(),  lossFactor);
+        int expLost = ExperienceExchange.expGained(experienceExchange.getHigherLoss(), lossFactor);
         int loseSum = loserExp - expLost;
         loser.setExperience(loseSum <= 0 ? Rank.MIN_EXP : loseSum);
 
