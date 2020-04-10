@@ -1,8 +1,26 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Map;
 
+@Getter
 public class ExperienceExchange {
+
+    private final int levelDiff;
+    private final int higherWin;
+    private final int higherLoss;
+    private final int lowerWin;
+    private final int lowerLoss;
+
+    private ExperienceExchange(int levelDiff, int higherWin, int higherLoss, int lowerWin, int lowerLoss) {
+        this.levelDiff = levelDiff;
+        this.higherWin = higherWin;
+        this.higherLoss = higherLoss;
+        this.lowerWin = lowerWin;
+        this.lowerLoss = lowerLoss;
+    }
     private static final Map<Integer, ExperienceExchange> EXP_EXCHANGE = Map.ofEntries(
             Map.entry(0, new ExperienceExchange(0, 100, 100, 100, 100)),
             Map.entry(1, new ExperienceExchange(1, 92, 108, 108, 92)),
@@ -22,19 +40,7 @@ public class ExperienceExchange {
             Map.entry(15, new ExperienceExchange(15, 50, 150, 150, 50))
     );
 
-    public int levelDiff;
-    public int higherWin;
-    public int higherLoss;
-    public int lowerWin;
-    public int lowerLoss;
 
-    private ExperienceExchange(int levelDiff, int higherWin, int higherLoss, int lowerWin, int lowerLoss) {
-        this.levelDiff = levelDiff;
-        this.higherWin = higherWin;
-        this.higherLoss = higherLoss;
-        this.lowerWin = lowerWin;
-        this.lowerLoss = lowerLoss;
-    }
 
     public static ExperienceExchange get(int levelDiff) {
         return levelDiff >= 15 ? EXP_EXCHANGE.get(15) : EXP_EXCHANGE.get(levelDiff);

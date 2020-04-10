@@ -4,8 +4,8 @@ import lombok.Getter;
 
 import java.util.Map;
 
-@Getter
 public class Rank {
+
 
     private final int level;
     /* minimum exp required for a level */
@@ -24,6 +24,30 @@ public class Rank {
         this.maxMatch = maxMatch + level;
         this.lossFactor = lossFactor;
         this.winFactor = winFactor;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getMinExp() {
+        return minExp;
+    }
+
+    public int getMaxExp() {
+        return maxExp;
+    }
+
+    public int getMaxMatch() {
+        return maxMatch;
+    }
+
+    public double getLossFactor() {
+        return lossFactor;
+    }
+
+    public double getWinFactor() {
+        return winFactor;
     }
 
     public static Rank get(Integer level) {
