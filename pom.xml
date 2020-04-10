@@ -23,8 +23,8 @@
         </repository>
     </distributionManagement>
 
+
     <build>
-        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -34,28 +34,33 @@
                         <release>11</release>  <!--or <release>10</release>-->
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.1</version>
+                    <version>2.8.2</version>
                     <configuration>
                         <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>com.github.github</groupId>
                     <artifactId>site-maven-plugin</artifactId>
-                    <version>0.11</version>
+                    <version>0.12</version>
                     <configuration>
-                        <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
-                        <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-                        <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-                        <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
-                        <includes><include>**/*</include></includes>
-                        <repositoryName>https://github.com/nikalsh/mmr</repositoryName>      <!-- github repo name -->
-                        <repositoryOwner>nikalsh</repositoryOwner>    <!-- github username  -->
+                        <message>Maven artifacts for ${project.version}</message>
+                        <noJekyll>true</noJekyll>
+                        <outputDirectory>${project.build.directory}/mvn-repo
+                        </outputDirectory>
+                        <branch>refs/heads/mvn-repo</branch>
+                        <includes>
+                            <include>**/*</include>
+                        </includes>
+                        <repositoryName>mmr</repositoryName>
+                        <repositoryOwner>nikalsh</repositoryOwner>
+                        <server>github</server>
                     </configuration>
                     <executions>
-                        <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
                         <execution>
                             <goals>
                                 <goal>site</goal>
@@ -65,7 +70,6 @@
                     </executions>
                 </plugin>
             </plugins>
-        </pluginManagement>
     </build>
 
 

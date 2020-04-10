@@ -31,7 +31,7 @@ public class MMR {
 
             int expLost = ExperienceExchange.expGained(experienceExchange.getLowerLoss(), lossFactor);
             int loseSum = loserExp - expLost;
-            loser.setExperience(loseSum <= 0 ? Rank.MIN_EXP : loseSum);
+            loser.setExperience(loseSum <= Rank.MIN_EXP ? Rank.MIN_EXP : loseSum);
 
             return updateLevels(winner, loser, winnerRank, loserRank);
         }
@@ -43,7 +43,7 @@ public class MMR {
 
         int expLost = ExperienceExchange.expGained(experienceExchange.getHigherLoss(), lossFactor);
         int loseSum = loserExp - expLost;
-        loser.setExperience(loseSum <= 0 ? Rank.MIN_EXP : loseSum);
+        loser.setExperience(loseSum <= Rank.MIN_EXP ? Rank.MIN_EXP : loseSum);
 
         return updateLevels(winner, loser, winnerRank, loserRank);
     }
