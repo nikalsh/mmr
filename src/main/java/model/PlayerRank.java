@@ -20,4 +20,14 @@ public class PlayerRank {
         this.playerId = playerId;
         this.level = Rank.findLevelByExperience(experience);
     }
+
+    public PlayerRank(Integer experience, Integer level) {
+        this.experience = experience;
+        this.level = level;
+    }
+
+    public PlayerRank(Integer experience) throws LevelNotFoundException {
+        this.experience = experience;
+        this.level = Rank.findLevelByExperience(experience);
+    }
 }
