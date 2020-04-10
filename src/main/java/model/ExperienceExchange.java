@@ -25,7 +25,6 @@ public class ExperienceExchange {
         return (int) ((double) exp * factor);
     }
 
-
     private static final Map<Integer, ExperienceExchange> EXP_EXCHANGE = Map.ofEntries(
             Map.entry(0, new ExperienceExchange(0, 100, 100, 100, 100)),
             Map.entry(1, new ExperienceExchange(1, 92, 108, 108, 92)),

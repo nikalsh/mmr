@@ -69,7 +69,7 @@ public class Rank {
                 .orElseThrow(() -> new LevelNotFoundException(String.format("Could not find level in experience range; minimum: %s, maximum: %s%n", MIN_EXP, MAX_EXP)));
     }
 
-    public static final Map<Integer, Rank> TABLE = Map.ofEntries(
+    private static final Map<Integer, Rank> TABLE = Map.ofEntries(
             Map.entry(1, new Rank(1, MIN_EXP, 99, 10, 0.0, 1.0)),
             Map.entry(2, new Rank(2, 100, 199, 9, 0.025, 1.0)),
             Map.entry(3, new Rank(3, 200, 299, 8, 0.05, 1.0)),
