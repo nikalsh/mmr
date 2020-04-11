@@ -1,6 +1,6 @@
-package model;
+package mmr.model;
 
-import exception.LevelNotFoundException;
+import mmr.exception.LevelNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

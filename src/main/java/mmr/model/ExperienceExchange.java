@@ -1,4 +1,4 @@
-package model;
+package mmr.model;
 
 import lombok.Getter;
 

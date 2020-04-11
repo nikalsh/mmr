@@ -1,14 +1,14 @@
-package service;
+package mmr;
 
-import exception.LevelNotFoundException;
-import model.ExperienceExchange;
-import model.PlayerRank;
-import model.Rank;
+import mmr.exception.LevelNotFoundException;
+import mmr.model.ExperienceExchange;
+import mmr.model.PlayerRank;
+import mmr.model.Rank;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MMR {
+public class ExperienceCalculator {
 
     public static List<PlayerRank> updatePlayerRanks(PlayerRank winner, PlayerRank loser) throws LevelNotFoundException {
 

@@ -1,4 +1,4 @@
-package exception;
+package mmr.exception;
 
 public class LevelNotFoundException extends Exception {
 
