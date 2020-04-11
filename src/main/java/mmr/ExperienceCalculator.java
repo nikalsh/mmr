@@ -1,5 +1,4 @@
 package mmr;
-
 import mmr.exception.LevelNotFoundException;
 import mmr.model.ExperienceExchange;
 import mmr.model.PlayerRank;
